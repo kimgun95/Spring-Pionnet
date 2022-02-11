@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace = "com.example.demo.dao.MemberDao">
+	<insert id ="saveMember" parameterType="Member">
+		INSERT INTO member(
+			id,
+			password,
+			name,
+			gender,
+			birth,
+			mail,
+			phone,
+			address,
+			reg,
+		    grade
+		)
+		VALUES(
+			#{id},
+			#{password},
+			#{name},
+			#{gender},
+			#{birth},
+			#{mail},
+			#{phone},
+			#{address},
+			sysdate,
+			(SELECT grade.name FROM grade WHERE grade.code = 2)
+		)
+	</insert>
+
+	<select id="findAllMember" resultType="Member">
+		SELECT *
+		FROM member
+	</select>
+
+</mapper>

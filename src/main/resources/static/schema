@@ -1,0 +1,29 @@
+--- member table 생성 ---
+create table member
+(
+  id varchar2(50) not null primary KEY
+  ,password varchar2(50) not null
+  ,name varchar2(50)
+  ,gender varchar2(10)
+  ,birth date
+  ,mail varchar2(100)
+  ,phone varchar2(50)
+  ,address varchar2(200)
+  ,reg date default sysdate
+  ,grade varchar2(50)
+);
+
+
+
+
+--- grade Table 생성 ---
+create table grade
+(
+  code integer not null primary KEY
+  ,name varchar2(50) not null
+);
+
+--- grade table에 등급 insert ---
+insert into grade values (01, 'ADMIN');
+insert into grade values (02, 'BASIC');
+

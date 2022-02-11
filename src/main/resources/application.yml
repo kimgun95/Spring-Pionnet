@@ -1,0 +1,33 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  datasource: # datasource 설정
+    dbcp2:
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.74.100.211:1521/ORCL19C
+    username: academy1
+    password: academy1
+    hikari: # 커넥션 풀
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+  servlet:
+    multipart: # 파일 저장 정보
+      max-file-size: 10MB
+      max-request-size: 10MB
+      location: C:\\Users\\harri\\eclipse-workspace\\demo\\src\\main\\resources\\static\\image
+
+server:
+  servlet:
+    jsp: # jsp 수정시 서버 재시작 없이 바로 적용
+      init-parameters:
+        development: true
+  port: 7070
+
+mybatis: # mapper 정보
+  mapper-locations: classpath:mappers/**/*.xml
+  type-aliases-package: com.example.demo.domain
+  configuration:
+    map-underscore-to-camel-case: true
