@@ -13,8 +13,20 @@ create table member
   ,grade varchar2(50)
 );
 
-
-
+--- member Table에 ADMIN insert ---
+INSERT INTO member
+  (id, password, name, gender, birth, mail, phone, address, reg, grade)
+VALUES
+  ('admin',
+   'admin',
+   'admin',
+   'admin',
+   '20220212',
+   'admin',
+   'admin',
+   'admin',
+   sysdate,
+   (SELECT grade.name FROM grade WHERE grade.code = 1));
 
 --- grade Table 생성 ---
 create table grade
