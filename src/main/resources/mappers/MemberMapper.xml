@@ -29,6 +29,13 @@
 		)
 	</insert>
 
+	<select id="getGrade" parameterType="String" resultType="String">
+		SELECT member.grade
+		FROM member
+		WHERE member.id = #{id}
+		AND member.password = #{pw}
+	</select>
+
 	<select id="findAllMember" resultType="Member">
 		SELECT *
 		FROM member
