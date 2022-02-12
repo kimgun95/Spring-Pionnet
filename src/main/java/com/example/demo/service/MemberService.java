@@ -41,6 +41,7 @@ public class MemberService {
 				req.getAddress()
 		);
 
+
 		// 여러개의 이미지 파일 처리, 그래서 사실 이미지는 이번 실습에서 DB에 저장하지 않는다.
 		for(MultipartFile image : req.getFiles()) {
 			try {	
@@ -58,7 +59,9 @@ public class MemberService {
 		}
 		
 		memberDao.saveMember(member);
-		
+
+		String grade = memberDao.getGrade(member.getId(), member.getPassword());
+		member.setGrade(grade);
 		return MemberResponse.of(member);
 	}
 	
