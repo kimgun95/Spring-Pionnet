@@ -23,8 +23,6 @@ public class DemoApplicationTests {
 		);
 		System.out.println(m.getAddress());
 		System.out.println(m.getReg());
-
-
 		System.out.println(m.getGrade());
 	}
 
