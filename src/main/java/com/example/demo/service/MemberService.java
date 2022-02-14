@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +61,6 @@ public class MemberService {
 		
 		memberDao.saveMember(member);
 
-		String grade = memberDao.getGrade(member.getId(), member.getPassword());
-		member.setGrade(grade);
 		return MemberResponse.of(member);
 	}
 	
@@ -72,4 +71,10 @@ public class MemberService {
 				.collect(Collectors.toList());
 	}
 
+	public List<MemberResponse> findMember(String gradeCode) {
+		return memberDao.findMember(gradeCode)
+				.stream()
+				.map(MemberResponse::of)
+				.collect(Collectors.toList());
+	}
 }
