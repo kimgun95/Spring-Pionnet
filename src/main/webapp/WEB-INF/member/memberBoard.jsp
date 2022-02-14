@@ -20,18 +20,7 @@
 
 	<table id="list"></table>
 	<div id="pager"></div>
-	<div id="parent">
-		<div style="float: left; width: 30%;">
-			<div>
-				<select id="selectBox">
-					<option value="BASIC">일반</option>
-					<option value="ADMIN">관리자</option>
-					<option value="ALL">전체</option>
-				</select>
-			</div>
-			<input type="button" id="filterButton" name="search" value="filter" />
-		</div>
-	</div>
+
 
 </body>
 
@@ -41,14 +30,19 @@
 		datatype: "json",
 		colNames:['아이디','이름', '성별', '생년월일', '이메일', '전화번호','주소','등급'],
 		colModel:[
-			{name:'id',index:'id', width:55},
-			{name:'name',index:'name', width:90},
-			{name:'gender',index:'name asc, invdate', width:100},
-			{name:'birth',index:'birth', width:80, align:"center"},
-			{name:'email',index:'email', width:80, align:"center"},
-			{name:'phone',index:'phone', width:80, align:"center"},
-			{name:'address',index:'address', width:80, align:"center"},
-			{name:'grade',index:'grade', width:80, align:"center"}
+			{name:'id',index:'id', width:55, search: false},
+			{name:'name',index:'name', width:90, search: false},
+			{name:'gender',index:'name asc, invdate', width:100, search: false},
+			{name:'birth',index:'birth', width:80, align:"center", search: false},
+			{name:'email',index:'email', width:80, align:"center", search: false},
+			{name:'phone',index:'phone', width:80, align:"center", search: false},
+			{name:'address',index:'address', width:80, align:"center", search: false},
+			{name:'grade',index:'grade', width:80, align:"center", stype:'select',
+				searchoptions: {
+					sopt: ['eq'],
+					value: ':Any;1:ADMIN;2:BASIC'
+				}
+			}
 		],
 		rowNum:10,
 		rowList:[10,20,30],
