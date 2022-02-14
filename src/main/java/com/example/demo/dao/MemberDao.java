@@ -20,6 +20,6 @@ public interface MemberDao { // db접근
 //	}
 	
 	public void saveMember(Member member);
-	public String getGrade(String id, String pw);
 	public List<Member> findAllMember(); // select한 memeber들을 list로 받아옴
+	public List<Member> findMember(String gradeCode);
 }

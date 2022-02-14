@@ -13,7 +13,7 @@
 			phone,
 			address,
 			reg,
-		    grade
+			grade
 		)
 		VALUES(
 			#{id},
@@ -25,20 +25,19 @@
 			#{phone},
 			#{address},
 			sysdate,
-			(SELECT grade.name FROM grade WHERE grade.code = 2)
+			#{grade}
 		)
 	</insert>
-
-	<select id="getGrade" parameterType="String" resultType="String">
-		SELECT member.grade
-		FROM member
-		WHERE member.id = #{id}
-		AND member.password = #{pw}
-	</select>
 
 	<select id="findAllMember" resultType="Member">
 		SELECT *
 		FROM member
+	</select>
+
+	<select id="findMember" parameterType="String" resultType="Member">
+		SELECT *
+		FROM member
+		WHERE member.grade = #{gradeCode}
 	</select>
 
 </mapper>
