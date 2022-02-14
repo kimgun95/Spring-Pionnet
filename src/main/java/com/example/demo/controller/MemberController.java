@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.MemberRequest;
@@ -20,7 +21,7 @@ import com.example.demo.service.MemberService;
 public class MemberController {
 
 	private MemberService memberService;
-	
+
 	@Autowired
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
@@ -50,8 +51,14 @@ public class MemberController {
 	
 	@RequestMapping("/list")
 	@ResponseBody				
-	public List<MemberResponse> findAllMember() {
-		return memberService.findAllMember();
+	public List<MemberResponse> findAllMember(@RequestParam(value = "searchString", required = false) String gradeCode) {
+		if (gradeCode == null) { // 처음 url의 경로
+			return memberService.findMember("2");
+		}
+		else if (gradeCode.equals("")) { // "전체"의 경우
+			return memberService.findAllMember();
+		}
+		return memberService.findMember(gradeCode); // "등급 설정"의 경우
 	}
 }
 
