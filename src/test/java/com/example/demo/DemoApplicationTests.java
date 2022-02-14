@@ -11,19 +11,7 @@ public class DemoApplicationTests {
 
 	@Test
 	void memberTest() {
-		Member m = new Member(
-				"aaaa",
-				"aaaa",
-				"aaaa",
-				"남",
-				LocalDate.now(),
-				"aaaa",
-				"1111",
-				"aaaa"
-		);
-		System.out.println(m.getAddress());
-		System.out.println(m.getReg());
-		System.out.println(m.getGrade());
+
 	}
 
 }
