@@ -17,7 +17,6 @@ public class Member {
 	
 	public Member(String id, String password, String name, String gender, LocalDate birth, String mail, String phone,
 			String address) {
-		super();
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -26,6 +25,7 @@ public class Member {
 		this.mail = mail;
 		this.phone = phone;
 		this.address = address;
+		this.grade = "2"; // BASIC(일반) 등급으로 초기화
 	}
 
 	public String getId() {
@@ -66,9 +66,5 @@ public class Member {
 
 	public String getGrade() {
 		return grade;
-	}
-
-	public void setGrade(String grade) {
-		this.grade = grade;
 	}
 }
